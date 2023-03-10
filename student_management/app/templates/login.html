@@ -1,0 +1,20 @@
+<form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Username" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <button type="submit">Login</button>
+    {% if error %}
+        <p style="color: rgb(255, 47, 0);">{{ error }}</p>
+    {% endif %}
+    <p> Don't have an account? Create one here <a href="{% url 'signup' %}">Sign up</a></p>
+
+
+</form>
+
+{% if successful %}
+    <ul class="successful">
+        {% for successful in successful %}
+            <li{% if successful.tags %} class="{{ successful.tags }}"{% endif %}>{{ successful }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}

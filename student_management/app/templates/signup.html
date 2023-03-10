@@ -1,0 +1,21 @@
+<html>
+<head>
+    <title>Sign Up</title>
+</head>
+<body>
+    
+    <h1>Sign Up</h1>
+    <form method="post" action="{% url 'signup' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Sign Up</button>
+    </form>
+    {% if error_message %}
+    <p style="color: rgb(255, 47, 0);">{{ error_message }}</p>
+    <a href="{% url 'login' %}"> Return to login </a>
+    {% endif %}
+
+    
+    
+</body>
+</html>

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Edit Course</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save">
+</form>
+<form method="post" action="{% url 'delete_course' course.id %}">
+    {% csrf_token %}
+    <input type="submit" value="Delete">
+</form>
+{% endblock %}
